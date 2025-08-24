@@ -33,7 +33,7 @@ const Footer = () => {
 					<div className="space-y-4">
 						<Link to="/" className="block">
 							<img
-								src="/src/assets/logo.svg"
+								src="/logo.svg"
 								alt="Prime Level Real Estate"
 								className="h-12 w-auto"
 							/>
