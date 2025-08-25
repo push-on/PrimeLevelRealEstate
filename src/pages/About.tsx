@@ -10,6 +10,11 @@ import {
 } from 'lucide-react'
 
 const About = () => {
+  // Add padding-top to account for fixed navigation
+  const pageStyle = {
+    paddingTop: '5rem' // 80px to match navigation height
+  }
+
   const values = [
     {
       icon: <Heart className="h-8 w-8 text-accent" />,
@@ -66,7 +71,7 @@ const About = () => {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary/10 to-accent/10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -14,6 +14,11 @@ import {
 } from 'lucide-react'
 
 const Services = () => {
+  // Add padding-top to account for fixed navigation
+  const pageStyle = {
+    paddingTop: '5rem' // 80px to match navigation height
+  }
+
   const mainServices = [
     {
       icon: <Home className="h-12 w-12 text-accent" />,
@@ -112,7 +117,7 @@ const Services = () => {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="bg-primary/5 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -19,6 +19,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
+  // Add padding-top to account for fixed navigation
+  const pageStyle = {
+    paddingTop: '5rem' // 80px to match navigation height
+  }
+
   const founderInfo = {
     phone: "+971504314269",
     email: "imtaz@primelevelrealestate.com",
@@ -76,7 +81,7 @@ const Contact = () => {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="bg-primary/5 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

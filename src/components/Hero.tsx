@@ -1,61 +1,75 @@
-import { Button } from '@/components/ui/button';
-import { Play, ArrowRight } from 'lucide-react';
-import heroImage from '@/assets/hero-property.jpg';
+import { Button } from '@/components/ui/button'
+import { Play, ArrowRight } from 'lucide-react'
+import heroImage from '@/assets/hero-property.jpg'
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-up">
-          <h1 className="heading-xl text-white mb-6">
-            Find Your Perfect
-            <span className="bg-gradient-to-r from-accent to-accent-glow bg-clip-text text-transparent"> Dream Home</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Discover exceptional properties with our expert guidance. From luxury estates to cozy homes, 
-            we make your real estate dreams a reality.
-          </p>
+      <div className="relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+        <div className="max-w-4xl w-full">
+          <div className="space-y-4 md:space-y-6">
+            <p className="text-sm uppercase tracking-[0.25em] text-accent font-medium animate-[fade-up_0.5s_ease_forwards_0.1s] opacity-0 text-center sm:text-left">
+              Your Next Move Starts Here
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-4">
-              Explore Properties
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            
-            <Button variant="premium" size="lg" className="text-lg px-8 py-4">
-              <Play className="mr-2 h-5 w-5" />
-              Watch Tour
-            </Button>
+            <h1 className="text-[3.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] font-playfair font-light text-white text-center sm:text-left">
+              <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">Find your</span>
+              <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.3s]">
+                <span className="font-playfair italic text-accent">perfect</span> spot
+              </span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed opacity-0 animate-[fade-up_0.5s_ease_forwards_0.4s] text-center sm:text-left">
+              Discover exceptional properties crafted for generations to come. Expert guidance for your dream home journey.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center sm:justify-start opacity-0 animate-[fade-up_0.5s_ease_forwards_0.5s]">
+              <Button
+                variant="luxury"
+                size="default"
+                className="group h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider hover:bg-accent/90"
+              >
+                View Properties
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:scale-110" />
+              </Button>
+
+              <Button
+                variant="outline"
+                size="default"
+                className="h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider text-white border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30"
+              >
+                Let's Connect
+              </Button>
+            </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 animate-fade-up">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-x-16 gap-y-10 mt-16 border-t border-white/10 pt-10 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2">500+</div>
-            <div className="text-white/80">Properties Sold</div>
+            <div className="text-4xl font-medium text-accent">500+</div>
+            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Properties Sold</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2">15+</div>
-            <div className="text-white/80">Years Experience</div>
+            <div className="text-4xl font-medium text-accent">15+</div>
+            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2">98%</div>
-            <div className="text-white/80">Client Satisfaction</div>
+            <div className="text-4xl font-medium text-accent">98%</div>
+            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Client Satisfaction</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2">24/7</div>
-            <div className="text-white/80">Support Available</div>
+            <div className="text-4xl font-medium text-accent">24/7</div>
+            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Support Available</div>
           </div>
         </div>
       </div>
@@ -67,7 +81,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
