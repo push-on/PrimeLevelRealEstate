@@ -89,7 +89,7 @@ const Navigation = () => {
                       to={link.path}
                       className={`uppercase relative block py-4 text-5xl tracking-wider transition-all duration-300 
                         ${isActive(link.path)
-                        ? 'text-white pl-6 font-bold'
+                          ? 'text-white pl-6 font-bold'
                           : 'text-gray-300 hover:text-white hover:pl-6'
                         }`}
                       onClick={() => setIsOpen(false)}
@@ -102,7 +102,7 @@ const Navigation = () => {
                   </div>
                 ))}
 
-                <div className={`pt-12 transform transition-all duration-300 delay-[400ms] ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`pt-12 transform transition-all duration-300 transition-delay-[400ms] ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                   <Button
                     variant="luxury"
                     className="w-full text-lg py-6 font-medium tracking-wider relative overflow-hidden group"
@@ -112,7 +112,7 @@ const Navigation = () => {
                   </Button>
                 </div>
 
-                <div className={`pt-8 flex flex-col items-center space-y-4 text-gray-300 transform transition-all duration-300 delay-[500ms] ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`pt-8 flex flex-col items-center space-y-4 text-gray-300 transform transition-all duration-300 transition-delay-[500ms] ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                   <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-white transition-colors">
                     <Phone className="h-5 w-5" /> +1 234 567 890
                   </a>
