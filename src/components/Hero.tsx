@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Play, ArrowRight } from 'lucide-react'
 import heroImage from '@/assets/hero-property.jpg'
 import CountUp from './CountUp'
+import ShinyText from './ShinyText'
 
 const Hero = () => {
   return (
@@ -48,7 +49,7 @@ const Hero = () => {
                 size="default"
                 className="h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider text-white border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30"
               >
-                Let's Connect
+                <ShinyText highlightColor='hsla(0, 0.00%, 0.00%, 0.36)' speedSec={6} overlayOpacity={0.9}>Let's Connect</ShinyText>
               </Button>
             </div>
           </div>
