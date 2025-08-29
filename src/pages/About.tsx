@@ -8,6 +8,7 @@ import {
   ArrowRight,
   CheckCircle
 } from 'lucide-react'
+import CountUp from '@/components/CountUp'
 
 const About = () => {
   // Add padding-top to account for fixed navigation
@@ -188,19 +189,27 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-6">By the Numbers</h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">500+</div>
+                  <div className="text-3xl font-bold mb-2">
+                    <CountUp end={500} suffix="+" />
+                  </div>
                   <div className="text-white/80 text-sm">Properties Sold</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">15+</div>
+                  <div className="text-3xl font-bold mb-2">
+                    <CountUp end={15} suffix="+" />
+                  </div>
                   <div className="text-white/80 text-sm">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">98%</div>
+                  <div className="text-3xl font-bold mb-2">
+                    <CountUp end={98} suffix="%" />
+                  </div>
                   <div className="text-white/80 text-sm">Satisfaction Rate</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">24/7</div>
+                  <div className="text-3xl font-bold mb-2">
+                    <CountUp end={24} />/7
+                  </div>
                   <div className="text-white/80 text-sm">Support</div>
                 </div>
               </div>

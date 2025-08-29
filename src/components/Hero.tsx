@@ -1,22 +1,43 @@
 import { Button } from '@/components/ui/button'
 import { Play, ArrowRight } from 'lucide-react'
-import heroImage from '@/assets/hero-property.jpg'
+import heroImage from '@/assets/hero-img.webp'
 import CountUp from './CountUp'
 import ShinyText from './ShinyText'
+import { useEffect, useState } from 'react'
 
 const Hero = () => {
+  const [parallaxY, setParallaxY] = useState(0)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (mediaQuery.matches) return
+
+    const handleScroll = () => {
+      const y = window.scrollY || 0
+      const offset = Math.min(y * 0.25, 200)
+      setParallaxY(offset)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{ backgroundImage: `url(${heroImage})`, transform: `translate3d(0, ${parallaxY}px, 0)` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
       </div>
 
       {/* Content */}
-      <div className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+      <div
+        className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center will-change-transform"
+        style={{ transform: `translate3d(0, ${-parallaxY * 0.08}px, 0)` }}
+      >
         <div className="max-w-4xl w-full ">
           <div className="space-y-4 md:space-y-6">
             <p className="text-sm uppercase tracking-[0.25em] text-accent font-medium animate-[fade-up_0.5s_ease_forwards_0.1s] opacity-0 text-center sm:text-left">
