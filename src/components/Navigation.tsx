@@ -64,7 +64,7 @@ const Navigation = () => {
               className={`relative z-50 w-12 h-12 flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-white/10' : 'hover:bg-white/5'}`}
               aria-label="Toggle menu"
             >
-              <div className="w-6 h-5 relative flex flex-col justify-between">
+              <div className="w-6 h-[1.1rem] relative flex flex-col justify-between">
                 <span className={`w-full h-0.5 bg-white transform transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
                 <span className={`w-full h-0.5 bg-white transform transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
                 <span className={`w-full h-0.5 bg-white transform transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -87,9 +87,9 @@ const Navigation = () => {
                   >
                     <Link
                       to={link.path}
-                      className={`relative block py-4 text-2xl font-playfair tracking-wider transition-all duration-300 
+                      className={`uppercase relative block py-4 text-5xl tracking-wider transition-all duration-300 
                         ${isActive(link.path)
-                          ? 'text-white pl-6'
+                        ? 'text-white pl-6 font-bold'
                           : 'text-gray-300 hover:text-white hover:pl-6'
                         }`}
                       onClick={() => setIsOpen(false)}
