@@ -1,3 +1,4 @@
+import PageHeader from '@/components/PageHeader';
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
@@ -73,18 +74,10 @@ const About = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-accent/10 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="heading-xl mb-6 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">About Prime Level Real Estate</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed opacity-0 animate-[fade-up_0.5s_ease_forwards_0.3s]">
-              Building lasting relationships through exceptional real estate service.
-              Our story is one of dedication, expertise, and unwavering commitment to our clients.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader 
+        title="About Prime Level Real Estate"
+        subtitle="Building lasting relationships through exceptional real estate service. Our story is one of dedication, expertise, and unwavering commitment to our clients."
+      />
 
       {/* Company Story */}
       <section className="py-20 bg-background">

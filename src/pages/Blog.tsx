@@ -1,3 +1,4 @@
+import PageHeader from '@/components/PageHeader';
 import { useMemo, useState } from 'react'
 import { blogCategories, blogPosts } from '@/lib/blog'
 import { Input } from '@/components/ui/input'
@@ -22,12 +23,10 @@ const Blog = () => {
 
 	return (
 		<div className="min-h-screen pt-20">
-			<section className="py-16 bg-background border-b">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h1 className="heading-lg mb-4">Blog</h1>
-					<p className="text-muted-foreground">Insights, guides, and news from Prime Level Real Estate.</p>
-				</div>
-			</section>
+			<PageHeader 
+				title="Blog"
+				subtitle="Insights, guides, and news from Prime Level Real Estate."
+			/>
 
 			<section className="py-10 bg-background">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
