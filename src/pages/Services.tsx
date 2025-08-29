@@ -1,3 +1,5 @@
+import { openWhatsApp } from '@/lib/whatsapp';
+import { openEmail } from '@/lib/email';
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
@@ -266,11 +268,11 @@ const Services = () => {
                 Contact us today for a free consultation and discover how we can help you achieve your real estate goals.
               </p>
               <div className="space-y-4">
-                <Button variant="premium" size="lg" className="w-full bg-white text-primary hover:bg-white/90">
+                <Button variant="luxury" size="lg" className="w-full bg-white text-primary hover:bg-white/90" onClick={openEmail}>
                   Schedule Consultation
                 </Button>
-                <Button variant="premium" size="lg" className="w-full border-white text-white hover:bg-white hover:text-primary">
-                  Call (555) 123-4567
+                <Button variant="outline-dark" size="lg" className="w-full border-white text-white hover:bg-white hover:text-primary" onClick={openWhatsApp}>
+                  Call Now
                 </Button>
               </div>
             </div>

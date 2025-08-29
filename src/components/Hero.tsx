@@ -4,8 +4,11 @@ import heroImage from '@/assets/hero-img.webp'
 import CountUp from './CountUp'
 import ShinyText from './ShinyText'
 import { useEffect, useState } from 'react'
+import { openWhatsApp } from '@/lib/whatsapp'
+import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
+  const navigate = useNavigate()
   const [parallaxY, setParallaxY] = useState(0)
 
   useEffect(() => {
@@ -60,6 +63,7 @@ const Hero = () => {
                 variant="luxury"
                 size="default"
                 className="group h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider hover:bg-accent/90"
+                onClick={() => navigate('/services')}
               >
                 View Properties
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:scale-110" />
@@ -69,6 +73,7 @@ const Hero = () => {
                 variant="outline"
                 size="default"
                 className="h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider text-white border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30"
+                onClick={openWhatsApp}
               >
                 <ShinyText highlightColor='hsla(0, 0.00%, 0.00%, 0.36)' speedSec={6} overlayOpacity={0.9}>Let's Connect</ShinyText>
               </Button>
