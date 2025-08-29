@@ -12,16 +12,7 @@ const Blog = () => {
 	const categories = useMemo(() => ['All', ...blogCategories], [])
 
 	const filtered = useMemo(() => {
-		const placeholderIds = [
-			'staging-tips-small-budget',
-			'mortgage-prep-checklist',
-			'open-house-success',
-			'condo-vs-townhome',
-			'investment-terms-101',
-			'winter-maintenance-list',
-		]
 		return blogPosts.filter((p) => {
-			if (!placeholderIds.includes(p.id)) return false
 			const matchCat = activeCategory === 'All' || p.category === activeCategory
 			const q = query.toLowerCase().trim()
 			const matchQ = !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || (p.tags || []).some(t => t.toLowerCase().includes(q))

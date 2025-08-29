@@ -15,51 +15,7 @@ export interface BlogPost {
 export const blogCategories: BlogCategory[] = ['Market', 'Buying', 'Selling', 'Investment', 'Guides', 'News']
 
 export const blogPosts: BlogPost[] = [
-	{
-		id: 'market-outlook-2025',
-		title: 'Real Estate Market Outlook 2025',
-		excerpt: 'Key trends shaping the real estate market in 2025 and how buyers and sellers can prepare.',
-		content: 'Full article content will go here... ',
-		category: 'Market',
-		author: 'Prime Level Team',
-		date: '2025-01-18',
-		image: '/og-image.jpg',
-		tags: ['trends', 'market', 'forecast']
-	},
-	{
-		id: 'first-time-buyer-guide',
-		title: 'First-Time Homebuyer Guide',
-		excerpt: 'Everything you need to know to navigate your first home purchase with confidence.',
-		content: 'Full article content will go here... ',
-		category: 'Guides',
-		author: 'Prime Level Team',
-		date: '2024-12-05',
-		image: '/og-image.png',
-		tags: ['guide', 'buying']
-	},
-	{
-		id: 'maximize-selling-price',
-		title: '7 Tips to Maximize Your Selling Price',
-		excerpt: 'Strategic improvements and presentation tips to increase your property’s final sale price.',
-		content: 'Full article content will go here... ',
-		category: 'Selling',
-		author: 'Prime Level Team',
-		date: '2024-11-16',
-		image: '/logo.svg',
-		tags: ['selling', 'staging']
-	},
-	{
-		id: 'rental-investment-basics',
-		title: 'Rental Investment Basics',
-		excerpt: 'Understand cash flow, cap rates, and how to evaluate a rental investment.',
-		content: 'Full article content will go here... ',
-		category: 'Investment',
-		author: 'Prime Level Team',
-		date: '2024-10-02',
-		image: '/favicon.svg',
-		tags: ['investment', 'rental']
-	}
-	,
+
 	{
 		id: 'staging-tips-small-budget',
 		title: '5 Quick Staging Tips on a Small Budget',

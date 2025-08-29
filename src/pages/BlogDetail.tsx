@@ -28,24 +28,27 @@ const BlogDetail = () => {
 	useEffect(() => {
 		let cancelled = false
 		async function load() {
-			if (!id) return
-			try {
-				const key = Object.keys(mdFiles).find(k => k.includes('.md') && k.includes(id))
-				if (!key) {
-					setError('Content not found.')
-					return
+			if (!id || !post) return
+
+			// The content is already in the post object, no need to fetch it.
+			if (post.content.startsWith('See ')) {
+				const path = post.content.substring(4)
+				const key = `/src/content/blogs/${path.split('/').pop()}`
+				try {
+					const raw = await mdFiles[key]()
+					if (cancelled) return
+					const { content } = parseFrontmatter(raw)
+					setContent(content)
+				} catch {
+					if (!cancelled) setContent('Failed to load content.')
 				}
-				const raw = await mdFiles[key]()
-				if (cancelled) return
-				const { content } = parseFrontmatter(raw)
-				setContent(content)
-			} catch {
-				if (!cancelled) setError('Failed to load content.')
+			} else {
+				setContent(post.content)
 			}
 		}
 		load()
 		return () => { cancelled = true }
-	}, [id])
+	}, [id, post])
 
 	if (!post) {
 		return (
@@ -80,7 +83,7 @@ const BlogDetail = () => {
 						<Card><CardContent className="p-8 text-center text-muted-foreground">{error}</CardContent></Card>
 					) : (
 						<article className="prose prose-neutral max-w-none">
-							<pre className="whitespace-pre-wrap text-base leading-relaxed">{content || 'Loading...'}</pre>
+							<div dangerouslySetInnerHTML={{ __html: content || 'Loading...' }} />
 						</article>
 					)}
 					<div className="mt-10">
