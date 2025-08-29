@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Play, ArrowRight } from 'lucide-react'
 import heroImage from '@/assets/hero-property.jpg'
+import CountUp from './CountUp'
 
 const Hero = () => {
   return (
@@ -14,21 +15,21 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
-        <div className="max-w-4xl w-full">
+      <div className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+        <div className="max-w-4xl w-full ">
           <div className="space-y-4 md:space-y-6">
             <p className="text-sm uppercase tracking-[0.25em] text-accent font-medium animate-[fade-up_0.5s_ease_forwards_0.1s] opacity-0 text-center sm:text-left">
               Your Next Move Starts Here
             </p>
 
-            <h1 className="text-[3.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] font-playfair font-light text-white text-center sm:text-left">
+            <h1 className="capitalize text-7xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.1] font-playfair font-light text-white text-center sm:text-left">
               <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">Find your</span>
               <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.3s]">
                 <span className="font-playfair italic text-accent">perfect</span> spot
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed opacity-0 animate-[fade-up_0.5s_ease_forwards_0.4s] text-center sm:text-left">
+            <p className="text-balance text-base md:text-xl text-gray-200 max-w-2xl leading-relaxed opacity-0 animate-[fade-up_0.5s_ease_forwards_0.4s] text-center sm:text-left">
               Discover exceptional properties crafted for generations to come. Expert guidance for your dream home journey.
             </p>
 
@@ -56,19 +57,27 @@ const Hero = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-x-16 gap-y-10 mt-16 border-t border-white/10 pt-10 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
           <div className="text-center">
-            <div className="text-4xl font-medium text-accent">500+</div>
+            <div className="text-4xl font-medium text-accent">
+              <CountUp end={500} suffix="+" />
+            </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Properties Sold</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-medium text-accent">15+</div>
+            <div className="text-4xl font-medium text-accent">
+              <CountUp end={15} suffix="+" />
+            </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-medium text-accent">98%</div>
+            <div className="text-4xl font-medium text-accent">
+              <CountUp end={98} suffix="%" />
+            </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Client Satisfaction</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-medium text-accent">24/7</div>
+            <div className="text-4xl font-medium text-accent">
+              <CountUp end={24} />/7
+            </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Support Available</div>
           </div>
         </div>
