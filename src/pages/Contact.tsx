@@ -86,8 +86,8 @@ const Contact = () => {
       <section className="bg-primary/5 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="heading-xl mb-6">Contact Us</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <h1 className="heading-xl mb-6 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">Contact Us</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed opacity-0 animate-[fade-up_0.5s_ease_forwards_0.3s]">
               Ready to take the next step? Get in touch with our expert team today.
               We're here to answer your questions and help you achieve your real estate goals.
             </p>
