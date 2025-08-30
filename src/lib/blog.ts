@@ -12,6 +12,7 @@ export interface BlogPost {
 	tags?: string[]
 }
 
+
 export const blogCategories: BlogCategory[] = ['Market', 'Buying', 'Selling', 'Investment', 'Guides', 'News']
 
 export const blogPosts: BlogPost[] = [

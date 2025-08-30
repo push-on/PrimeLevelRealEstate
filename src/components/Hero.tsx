@@ -27,10 +27,10 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        className="animate-fade-up  absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{ backgroundImage: `url(${heroImage})`, transform: `translate3d(0, ${parallaxY}px, 0)` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
