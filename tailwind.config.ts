@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import animate from "tailwindcss-animate"
 
 export default {
 	content: [
@@ -8,6 +9,7 @@ export default {
 		"./src/**/*.{ts,tsx}",
 	],
 	prefix: "",
+	plugins: [animate],
 	theme: {
 		container: {
 			center: true,
@@ -113,5 +115,4 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
 } satisfies Config
