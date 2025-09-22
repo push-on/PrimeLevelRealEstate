@@ -55,8 +55,8 @@ const About = () => {
       role: "Founder & CEO",
       description: "As the visionary Founder & CEO of Prime Level Real Estate, Imtaz Ahmed leads with expertise and innovation in the real estate industry.",
       contact: {
-        phone: "+971504314269",
-        email: "imtaz@primelevelrealestate.com",
+        phone: "+971544887771",
+        email: "info@primelevelrealestate.com",
         website: "www.primelevelrealestate.com"
       }
     },
@@ -87,7 +87,7 @@ const About = () => {
               <h2 className="heading-lg mb-6">Our Story</h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in 2008 by Jennifer Martinez, Prime Level Real Estate began as a small real estate
+                  Founded by Imtaz Ahmed, Prime Level Real Estate began as a small real estate
                   agency with a big vision: to transform how people experience buying and selling
                   properties. What started as a one-person operation has grown into a full-service
                   real estate company serving thousands of clients.

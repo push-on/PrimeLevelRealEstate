@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Play, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import heroImage from '@/assets/hero-img.webp'
 import CountUp from './CountUp'
 import ShinyText from './ShinyText'
@@ -27,14 +27,18 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden ">
       {/* Background Image */}
-      <div
-        className="animate-fade-up  absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
-        style={{ backgroundImage: `url(${heroImage})`, transform: `translate3d(0, ${parallaxY}px, 0)` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
-      </div>
+      <img
+        src={heroImage}
+        alt="Modern house with a pool"
+        loading="lazy"
+        decoding="async"
+        role="presentation"
+        className=" animate-fade-up absolute inset-0 w-full h-full sm:object-center object-cover will-change-transform"
+        style={{ transform: `translate3d(0, ${parallaxY}px, 0)` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-transparent"></div>
 
       {/* Content */}
       <div
@@ -48,9 +52,16 @@ const Hero = () => {
             </p>
 
             <h1 className="capitalize text-7xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.1] font-playfair font-light text-white text-center sm:text-left">
-              <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">Find your</span>
-              <span className="block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.3s]">
-                <span className="font-playfair italic text-accent">perfect</span> spot
+              <span className="block">
+                <span className="inline-block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.2s]">Find&nbsp;</span>
+                <span className="inline-block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.4s]">your</span>
+              </span>
+              <span className="block">
+                <span className="inline-block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
+                  <span className="font-playfair italic text-accent">perfect</span>
+                  &nbsp;
+                </span>
+                <span className="inline-block opacity-0 animate-[fade-up_0.5s_ease_forwards_0.8s]">spot</span>
               </span>
             </h1>
 
@@ -82,22 +93,22 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-x-16 gap-y-10 mt-16 border-t border-white/10 pt-10 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
+        <div className="bg-slate-900/50 backdrop-blur-sm p-8 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-x-16 gap-y-10 mt-16 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
           <div className="text-center">
             <div className="text-4xl font-medium text-accent">
               <CountUp end={500} suffix="+" />
             </div>
-            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Properties Sold</div>
+            <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Transactions</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-medium text-accent">
-              <CountUp end={15} suffix="+" />
+              <CountUp end={5} suffix="+" />
             </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Years Experience</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-medium text-accent">
-              <CountUp end={98} suffix="%" />
+              <CountUp end={99} suffix="%" />
             </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Client Satisfaction</div>
           </div>

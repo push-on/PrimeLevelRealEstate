@@ -1,7 +1,7 @@
 import { Phone } from 'lucide-react'
 
 const WhatsAppButton = () => {
-	const phoneNumber = "+971504314269"
+	const phoneNumber = "+971544887771"
 	const message = "Hello! I'm interested in Prime Level Real Estate services."
 
 	const handleWhatsAppClick = () => {

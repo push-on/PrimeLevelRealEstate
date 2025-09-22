@@ -1,6 +1,10 @@
-import { openWhatsApp } from '@/lib/whatsapp';
-import { openEmail } from '@/lib/email';
+import { Link } from 'react-router-dom'
+
+// ... (rest of the imports)
+import { openEmail } from '@/lib/email'
+import { openWhatsApp } from '@/lib/whatsapp'
 import Hero from '@/components/Hero'
+import MeetTheAgent from '@/components/MeetTheAgent'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import BlogCard from '@/components/BlogCard'
@@ -20,22 +24,26 @@ const Home = () => {
     {
       icon: <HomeIcon className="h-8 w-8 text-accent" />,
       title: "Buy Properties",
-      description: "Find your dream home with our extensive property listings and expert guidance."
+      description: "Find your dream home with our extensive property listings and expert guidance.",
+      link: "/contact?service=buying"
     },
     {
       icon: <Users className="h-8 w-8 text-accent" />,
       title: "Sell Properties",
-      description: "Get the best value for your property with our proven marketing strategies."
+      description: "Get the best value for your property with our proven marketing strategies.",
+      link: "/contact?service=selling"
     },
     {
       icon: <Award className="h-8 w-8 text-accent" />,
       title: "Property Management",
-      description: "Professional management services to maximize your investment returns."
+      description: "Professional management services to maximize your investment returns.",
+      link: "/contact?service=management"
     },
     {
       icon: <MapPin className="h-8 w-8 text-accent" />,
       title: "Rental Services",
-      description: "Find the perfect rental property or manage your rental investments."
+      description: "Find the perfect rental property or manage your rental investments.",
+      link: "/contact?service=rental"
     }
   ]
 
@@ -63,6 +71,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Hero />
+      <MeetTheAgent />
 
       {/* Company Introduction */}
       <section className="py-20 bg-background">
@@ -81,17 +90,19 @@ const Home = () => {
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-elegant transition-smooth group">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-semibold text-lg mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <Link to={service.link} key={index}>
+                <Card className="hover:shadow-elegant transition-smooth group h-full">
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                      {service.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -103,7 +114,7 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="heading-lg mb-6">
-                Why Choose Prime Level Real Estate?
+                Your Success is our Top Priority
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -236,7 +247,7 @@ const Home = () => {
         </div>
       </section>
 
- 
+
     </div>
   )
 }

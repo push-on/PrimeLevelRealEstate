@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { ThemeToggleButton } from './ThemeToggleButton'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 import { openWhatsApp } from '@/lib/whatsapp'
 
@@ -47,7 +48,7 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button
               variant="outline"
               size="lg"
@@ -56,6 +57,7 @@ const Navigation = () => {
             >
               Get Started
             </Button>
+            <ThemeToggleButton />
           </div>
 
           {/* Mobile Menu Button */}

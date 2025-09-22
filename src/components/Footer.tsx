@@ -5,8 +5,8 @@ const Footer = () => {
 	const currentYear = new Date().getFullYear()
 
 	const contactInfo = {
-		phone: "+971504314269",
-		email: "imtaz@primelevelrealestate.com",
+		phone: "+971544887771",
+		email: "info@primelevelrealestate.com",
 		website: "www.primelevelrealestate.com"
 	}
 
