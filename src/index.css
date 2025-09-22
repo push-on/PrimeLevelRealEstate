@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Real Estate Design System - Professional & Trustworthy
 All colors MUST be HSL.
 */
@@ -29,15 +17,15 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 140 24% 15%;
 
+    --muted: 140 20% 96%;
+    --muted-foreground: 140 24% 45%;
+
     --primary: 140 37% 26%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 140 37% 36%;
 
     --secondary: 43 45% 54%;
     --secondary-foreground: 0 0% 100%;
-
-    --muted: 140 20% 96%;
-    --muted-foreground: 140 24% 45%;
 
     --accent: 43 45% 54%;
     --accent-foreground: 0 0% 100%;
@@ -66,72 +54,15 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 215 25% 8%;
-    --foreground: 0 0% 95%;
-
-    --card: 215 25% 10%;
-    --card-foreground: 0 0% 95%;
-
-    --popover: 215 25% 10%;
-    --popover-foreground: 0 0% 95%;
-
-    --primary: 215 100% 65%;
-    --primary-foreground: 215 25% 8%;
-    --primary-glow: 215 100% 75%;
-
-    --secondary: 215 15% 15%;
-    --secondary-foreground: 0 0% 95%;
-
-    --muted: 215 15% 15%;
-    --muted-foreground: 215 15% 65%;
-
-    --accent: 38 85% 65%;
-    --accent-foreground: 215 25% 8%;
-    --accent-glow: 38 85% 75%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 95%;
-
-    --border: 215 15% 20%;
-    --input: 215 15% 20%;
-    --ring: 215 100% 65%;
-
-    /* Dark Mode Adjustments */
-    --luxury-gold: 38 85% 65%;
-    --luxury-gold-light: 38 85% 75%;
-    --navy-deep: 215 100% 15%;
-    --navy-light: 215 50% 25%;
-    --cream: 215 20% 12%;
-    --stone: 215 15% 18%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -139,53 +70,53 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
   }
+}
 
-  /* Custom Typography */
-  .heading-xl {
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+/* Custom Typography */
+.heading-xl {
+  @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+}
+
+.heading-lg {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+}
+
+.heading-md {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+}
+
+/* Custom Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
-  .heading-lg {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 
-  .heading-md {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  to {
+    opacity: 1;
   }
+}
 
-  /* Custom Animations */
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out;
+}
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.8s ease-out;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease-out;
-  }
-
-  /* Smooth transitions */
-  .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
