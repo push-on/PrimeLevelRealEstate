@@ -3,29 +3,11 @@ import { ArrowRight } from 'lucide-react'
 import heroImage from '@/assets/hero-img.webp'
 import CountUp from '@/components/CountUp'
 import ShinyText from '@/components/ShinyText'
-import { useEffect, useState } from 'react'
 import { openWhatsApp } from '@/lib/whatsapp'
 import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
   const navigate = useNavigate()
-  const [parallaxY, setParallaxY] = useState(0)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (mediaQuery.matches) return
-
-    const handleScroll = () => {
-      const y = window.scrollY || 0
-      const offset = Math.min(y * 0.25, 200)
-      setParallaxY(offset)
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden ">
       {/* Background Image */}
@@ -35,15 +17,13 @@ const Hero = () => {
         loading="lazy"
         decoding="async"
         role="presentation"
-        className=" animate-fade-up absolute inset-0 w-full h-full sm:object-center object-cover will-change-transform"
-        style={{ transform: `translate3d(0, ${parallaxY}px, 0)` }}
+        className=" animate-fade-up absolute inset-0 w-full h-full sm:object-center object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-transparent"></div>
 
       {/* Content */}
       <div
-        className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center will-change-transform"
-        style={{ transform: `translate3d(0, ${-parallaxY * 0.08}px, 0)` }}
+        className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
       >
         <div className="max-w-4xl w-full ">
           <div className="space-y-4 md:space-y-6">

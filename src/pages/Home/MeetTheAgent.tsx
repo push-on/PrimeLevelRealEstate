@@ -15,28 +15,28 @@ const MeetTheAgent = () => {
               <img
                 src={ProfileImage}
                 alt="Agent Headshot"
-                className={`w-full h-full object-cover rounded-2xl shadow-elegant translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.1s]" : "invisible opacity-0"}`}
+                className={`w-full h-full  ${isInView ? "animate-fade-in" : "invisible opacity-0"}`}
               />
             </div>
           </div>
           <div className="space-y-4 md:space-y-6">
-            <p className={`text-sm uppercase tracking-[0.25em] text-accent font-medium translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.2s]" : "invisible opacity-0"
+            <p className={`text-sm uppercase tracking-[0.25em] text-accent font-medium  ${isInView ? "animate-fade-up" : "invisible opacity-0"
               }`}>
               Founder & CEO
             </p>
-            <h2 className={`text-4xl md:text-5xl font-bold text-gray-800 font-playfair translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.3s]" : "invisible opacity-0"
+            <h2 className={`text-4xl md:text-5xl font-bold text-gray-800 font-playfair  ${isInView ? "animate-fade-up " : "invisible opacity-0"
               }`}>
               Meet Imtaz Ahmed
             </h2>
-            <p className={`text-lg text-gray-600 leading-relaxed translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.4s]" : "invisible opacity-0"
+            <p className={`text-lg text-gray-600 leading-relaxed  ${isInView ? "animate-fade-up " : "invisible opacity-0"
               }`}>
               With a passion for real estate and a commitment to his clients, Imtaz is dedicated to helping you find your perfect home. He brings over a decade of experience and a deep understanding of the luxury market to every transaction.
             </p>
-            <p className={`text-lg text-gray-600 leading-relaxed translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.5s]" : "invisible opacity-0"
+            <p className={`text-lg text-gray-600 leading-relaxed  ${isInView ? "animate-fade-up " : "invisible opacity-0"
               }`}>
               His goal is to make your buying or selling process as smooth and stress-free as possible. He believes in clear communication, transparency, and building lasting relationships with his clients.
             </p>
-            <div className={`translate-y-4 ${isInView ? "animate-[fade-up_0.5s_ease_forwards_0.6s]" : "invisible opacity-0"
+            <div className={`${isInView ? "animate-fade-up" : "invisible opacity-0"
               }`}>
               <Button
                 size="lg"
