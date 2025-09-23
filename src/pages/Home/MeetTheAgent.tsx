@@ -1,43 +1,35 @@
 import { Button } from "../../components/ui/button"
 import { ArrowRight } from "lucide-react"
 import ProfileImage from "@/assets/profile.webp"
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 
 const MeetTheAgent = () => {
-  const { ref, isInView } = useIntersectionObserver()
-
   return (
-    <section ref={ref} className="py-20">
+    <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="flex justify-center">
             <div className="w-full max-w-md overflow-hidden">
               <img
                 src={ProfileImage}
                 alt="Agent Headshot"
-                className={`w-full h-full  ${isInView ? "animate-fade-in" : "invisible opacity-0"}`}
+                className="w-full h-full"
               />
             </div>
           </div>
           <div className="space-y-4 md:space-y-6">
-            <p className={`text-sm uppercase tracking-[0.25em] text-accent font-medium  ${isInView ? "animate-fade-up" : "invisible opacity-0"
-              }`}>
+            <p className="text-sm uppercase tracking-[0.25em] text-accent font-medium">
               Founder & CEO
             </p>
-            <h2 className={`text-4xl md:text-5xl font-bold text-gray-800 font-playfair  ${isInView ? "animate-fade-up " : "invisible opacity-0"
-              }`}>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 font-playfair">
               Meet Imtaz Ahmed
             </h2>
-            <p className={`text-lg text-gray-600 leading-relaxed  ${isInView ? "animate-fade-up " : "invisible opacity-0"
-              }`}>
+            <p className="text-lg text-gray-600 leading-relaxed">
               With a passion for real estate and a commitment to his clients, Imtaz is dedicated to helping you find your perfect home. He brings over a decade of experience and a deep understanding of the luxury market to every transaction.
             </p>
-            <p className={`text-lg text-gray-600 leading-relaxed  ${isInView ? "animate-fade-up " : "invisible opacity-0"
-              }`}>
+            <p className="text-lg text-gray-600 leading-relaxed">
               His goal is to make your buying or selling process as smooth and stress-free as possible. He believes in clear communication, transparency, and building lasting relationships with his clients.
             </p>
-            <div className={`${isInView ? "animate-fade-up" : "invisible opacity-0"
-              }`}>
+            <div>
               <Button
                 size="lg"
                 variant="luxury"
