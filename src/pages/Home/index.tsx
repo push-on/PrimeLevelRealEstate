@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero'
+import Hero from './Hero'
 import MeetTheAgent from '@/pages/Home/MeetTheAgent'
 import { CompanyIntroduction } from './CompanyIntroduction'
 import { FeaturedSection } from './FeaturedSection'

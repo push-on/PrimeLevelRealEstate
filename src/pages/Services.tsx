@@ -235,7 +235,7 @@ const Services = () => {
               <div className="space-y-4 text-white/90">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>15+ years of proven experience in real estate</span>
+                  <span>5+ years of proven experience in real estate</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />

@@ -1,8 +1,9 @@
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent } from '@/components/ui/card'
 import { Home, Users, Award, MapPin } from 'lucide-react'
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
 import { cn } from '@/lib/utils'
+import { useInView } from 'framer-motion'
 
 const services = [
 	{
@@ -32,7 +33,8 @@ const services = [
 ]
 
 export const CompanyIntroduction = () => {
-	const { ref, isInView } = useIntersectionObserver({ threshold: 0.1 })
+	const ref = React.useRef(null)
+	const isInView = useInView(ref)
 
 	return (
 		<section ref={ref} className="py-20 bg-background">

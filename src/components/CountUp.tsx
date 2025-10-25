@@ -26,31 +26,14 @@ export default function CountUp({
 	className,
 }: CountUpProps) {
 	const ref = useRef<HTMLSpanElement | null>(null)
-	const [hasStarted, setHasStarted] = useState(false)
 	const [displayValue, setDisplayValue] = useState(start)
+	const [hasStarted, setHasStarted] = useState(false)
 
 	useEffect(() => {
-		const element = ref.current
-		if (!element) return
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setHasStarted(true)
-					}
-				})
-			},
-			{ threshold: 0.3 }
-		)
-
-		observer.observe(element)
-		return () => observer.disconnect()
+		setHasStarted(true)
 	}, [])
 
 	useEffect(() => {
-		if (!hasStarted) return
-
 		let rafId = 0
 		const startTime = performance.now()
 
@@ -71,7 +54,7 @@ export default function CountUp({
 
 		rafId = requestAnimationFrame(animate)
 		return () => cancelAnimationFrame(rafId)
-	}, [hasStarted, durationMs, start, end, easing])
+	}, [durationMs, start, end, easing])
 
 	const formatted = new Intl.NumberFormat(undefined, {
 		minimumFractionDigits: decimals,

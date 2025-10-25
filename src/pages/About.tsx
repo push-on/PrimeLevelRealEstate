@@ -43,7 +43,7 @@ const About = () => {
   const achievements = [
     "200+ successful property transactions",
     "98% client satisfaction rate",
-    "15+ years of market experience",
+    "5+ years of market experience",
     "Award-winning customer service",
     "Licensed and insured professionals",
     "Extensive local market knowledge"

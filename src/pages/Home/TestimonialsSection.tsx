@@ -1,6 +1,7 @@
+import * as React from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Star } from 'lucide-react'
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
+import { useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const testimonials = [
@@ -25,7 +26,8 @@ const testimonials = [
 ]
 
 export const TestimonialsSection = () => {
-	const { ref, isInView } = useIntersectionObserver({ threshold: 0.1 })
+	const ref = React.useRef(null)
+	const isInView = useInView(ref, { once: true })
 
 	return (
 		<section ref={ref} className="py-20 bg-background">
