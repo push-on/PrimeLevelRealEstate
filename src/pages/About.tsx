@@ -41,7 +41,7 @@ const About = () => {
   ]
 
   const achievements = [
-    "500+ successful property transactions",
+    "200+ successful property transactions",
     "98% client satisfaction rate",
     "15+ years of market experience",
     "Award-winning customer service",
@@ -63,7 +63,7 @@ const About = () => {
     {
       name: "David Thompson",
       role: "Senior Sales Director",
-      description: "David brings 15 years of sales expertise and has closed over 200 successful transactions."
+      description: "David brings 5 years of sales expertise and has closed over 200 successful transactions."
     },
     {
       name: "Sarah Kim",

@@ -81,7 +81,7 @@ const Home = () => {
               Welcome to Prime Level Real Estate
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              With over 15 years of experience in real estate, we're dedicated to helping you
+              With over 5 years of experience in real estate, we're dedicated to helping you
               achieve your property goals. Whether you're buying, selling, or investing, our
               expert team provides personalized service and market insights to ensure success.
             </p>
@@ -146,7 +146,7 @@ const Home = () => {
                   <div>
                     <h4 className="font-semibold mb-2">Proven Track Record</h4>
                     <p className="text-muted-foreground">
-                      With 500+ successful transactions, we have the experience you can trust.
+                      With 200+ successful transactions, we have the experience you can trust.
                     </p>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ const Home = () => {
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Based on 500+ client reviews
+                    Based on 200+ client reviews
                   </p>
                 </div>
               </div>

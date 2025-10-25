@@ -28,8 +28,8 @@ const Contact = () => {
   }
 
   const founderInfo = {
-    phone: "+971504314269",
-    email: "imtaz@primelevelrealestate.com",
+    phone: "+97142238211",
+    email: "info@primelevelrealestate.com",
     website: "www.primelevelrealestate.com",
     founder: "Imtaz Ahmed"
   }

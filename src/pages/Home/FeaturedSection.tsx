@@ -15,7 +15,7 @@ export const FeaturedSection = () => {
 							{[
 								{ title: "Expert Market Knowledge", desc: "Our team stays current with market trends and pricing to give you the competitive edge." },
 								{ title: "Personalized Service", desc: "Every client receives tailored solutions based on their unique needs and goals." },
-								{ title: "Proven Track Record", desc: "With 500+ successful transactions, we have the experience you can trust." }
+								{ title: "Proven Track Record", desc: "With 200+ successful transactions, we have the experience you can trust." }
 							].map((item, index) => (
 								<div
 									key={index}
@@ -51,7 +51,7 @@ export const FeaturedSection = () => {
 									))}
 								</div>
 								<p className="text-sm text-muted-foreground">
-									Based on 500+ client reviews
+									Based on 200+ client reviews
 								</p>
 							</div>
 						</div>

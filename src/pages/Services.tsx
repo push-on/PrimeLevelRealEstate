@@ -239,7 +239,7 @@ const Services = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>500+ successful transactions completed</span>
+                  <span>200+ successful transactions completed</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />

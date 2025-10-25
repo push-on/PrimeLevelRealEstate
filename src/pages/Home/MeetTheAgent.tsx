@@ -24,7 +24,7 @@ const MeetTheAgent = () => {
               Meet Imtaz Ahmed
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              With a passion for real estate and a commitment to his clients, Imtaz is dedicated to helping you find your perfect home. He brings over a decade of experience and a deep understanding of the luxury market to every transaction.
+              With a passion for real estate and a commitment to his clients, Imtaz is dedicated to helping you find your perfect home. He brings over 5 years of experience and a deep understanding of the luxury market to every transaction.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               His goal is to make your buying or selling process as smooth and stress-free as possible. He believes in clear communication, transparency, and building lasting relationships with his clients.

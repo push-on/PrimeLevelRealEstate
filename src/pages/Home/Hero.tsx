@@ -76,7 +76,7 @@ const Hero = () => {
         <div className="bg-slate-900/50 backdrop-blur-sm p-8 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-x-16 gap-y-10 mt-16 opacity-0 animate-[fade-up_0.5s_ease_forwards_0.6s]">
           <div className="text-center">
             <div className="text-4xl font-medium text-accent">
-              <CountUp end={500} suffix="+" />
+              <CountUp end={200} suffix="+" />
             </div>
             <div className="text-sm text-white/70 mt-2 uppercase tracking-[0.15em]">Transactions</div>
           </div>

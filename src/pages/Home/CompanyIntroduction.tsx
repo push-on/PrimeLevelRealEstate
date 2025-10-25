@@ -48,7 +48,7 @@ export const CompanyIntroduction = () => {
 						"text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed scroll-hidden",
 						isInView && "scroll-show [transition-delay:200ms]"
 					)}>
-						With over 15 years of experience in real estate, we're dedicated to helping you
+						With over 5 years of experience in real estate, we're dedicated to helping you
 						achieve your property goals. Whether you're buying, selling, or investing, our
 						expert team provides personalized service and market insights to ensure success.
 					</p>
