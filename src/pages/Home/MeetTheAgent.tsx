@@ -1,8 +1,10 @@
 import { Button } from "../../components/ui/button"
 import { ArrowRight } from "lucide-react"
 import ProfileImage from "@/assets/profile.webp"
+import { useNavigate } from "react-router-dom"
 
 const MeetTheAgent = () => {
+  const navigate = useNavigate()
   return (
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +35,7 @@ const MeetTheAgent = () => {
               <Button
                 size="lg"
                 variant="luxury"
-                onClick={() => window.location.assign('/about')}
+                onClick={() => navigate('/about')}
                 className="group"
               >
                 Learn More About Imtaz
