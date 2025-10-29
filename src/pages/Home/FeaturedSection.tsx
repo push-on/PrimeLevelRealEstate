@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Star, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Link } from 'react-router-dom'
 
 export const FeaturedSection = () => {
 	return (
@@ -31,14 +32,16 @@ export const FeaturedSection = () => {
 								</div>
 							))}
 						</div>
-						<Button
-							variant="luxury"
-							size="lg"
-							className="mt-8"
-						>
-							Learn More About Us
-							<ArrowRight className="ml-2 h-5 w-5" />
-						</Button>
+						<Link to="/about">
+							<Button
+								variant="luxury"
+								size="lg"
+								className="mt-8"
+							>
+								Learn More About 
+								<ArrowRight className="ml-2 h-5 w-5" />
+							</Button>
+						</Link>
 					</div>
 					<div className="relative">
 						<div className="bg-card rounded-2xl p-8 shadow-elegant">

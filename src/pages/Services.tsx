@@ -1,8 +1,10 @@
-import PageHeader from '@/components/PageHeader';
-import { openWhatsApp } from '@/lib/whatsapp';
-import { openEmail } from '@/lib/email';
+import PageHeader from '@/components/PageHeader'
+import { openWhatsApp } from '@/lib/whatsapp'
+import { openEmail } from '@/lib/email'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { useState } from 'react'
 import {
   Home,
   TrendingUp,
@@ -17,6 +19,8 @@ import {
 } from 'lucide-react'
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<typeof mainServices[0] | null>(null)
+
   // Add padding-top to account for fixed navigation
   const pageStyle = {
     paddingTop: '5rem' // 80px to match navigation height
@@ -121,7 +125,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <PageHeader 
+      <PageHeader
         title="Our Services"
         subtitle="Comprehensive real estate solutions tailored to your needs. From buying and selling to management and investment guidance, we're your trusted partner in real estate."
       />
@@ -150,7 +154,7 @@ const Services = () => {
                           </div>
                         ))}
                       </div>
-                      <Button variant="luxury" className="mt-6">
+                      <Button variant="luxury" className="mt-6" onClick={() => setSelectedService(service)}>
                         Learn More
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -264,7 +268,7 @@ const Services = () => {
                 <Button variant="luxury" size="lg" className="w-full bg-white text-primary hover:bg-white/90" onClick={openEmail}>
                   Schedule Consultation
                 </Button>
-                <Button variant="outline-dark" size="lg" className="w-full border-white text-white hover:bg-white hover:text-primary" onClick={openWhatsApp}>
+                <Button variant="outline-dark" size="lg" className="w-full border-white text-white hover:bg-white hover:text-primary" onClick={() => openWhatsApp()}>
                   Call Now
                 </Button>
               </div>
@@ -272,6 +276,46 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Service Details Modal */}
+      <Dialog open={!!selectedService} onOpenChange={(open) => !open && setSelectedService(null)}>
+        <DialogContent className="sm:max-w-[600px]">
+          {selectedService && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-3">
+                  <span className="flex-shrink-0">{selectedService.icon}</span>
+                  <span>{selectedService.title}</span>
+                </DialogTitle>
+                <DialogDescription className="text-lg pt-4">
+                  {selectedService.description}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Key Features</h4>
+                  <div className="grid gap-3">
+                    {selectedService.features.map((feature, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button className="flex-1" variant="luxury" onClick={openEmail}>
+                    Schedule Consultation
+                  </Button>
+                  <Button className="flex-1" variant="outline" onClick={() => openWhatsApp(`I'm interested in your ${selectedService.title.toLowerCase()} services. Can we discuss this further?`)}>
+                    Contact via WhatsApp
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

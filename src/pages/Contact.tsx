@@ -1,6 +1,6 @@
-import PageHeader from '@/components/PageHeader';
-import { openWhatsApp } from '@/lib/whatsapp';
-import { openEmail } from '@/lib/email';
+import PageHeader from '@/components/PageHeader'
+import { openWhatsApp } from '@/lib/whatsapp'
+import { openEmail } from '@/lib/email'
 import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -8,97 +8,85 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useToast } from '@/hooks/use-toast'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { sendEmail } from '@/lib/emailService'
 import {
   Phone,
   Mail,
-  MapPin,
-  Clock,
+  User,
   MessageSquare,
-  Send,
-  Globe
 } from 'lucide-react'
+
+const formSchema = z.object({
+  fullName: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().optional(),
+  service: z.enum(['buying', 'selling', 'rental', 'management', 'consultation']),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+})
+
+type FormData = z.infer<typeof formSchema>
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
-  // Add padding-top to account for fixed navigation
-  const pageStyle = {
-    paddingTop: '5rem' // 80px to match navigation height
-  }
-
-  const founderInfo = {
-    phone: "+97142238211",
-    email: "info@primelevelrealestate.com",
-    website: "www.primelevelrealestate.com",
-    founder: "Imtaz Ahmed"
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-    })
-
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset()
-  }
-
-  const contactInfo = [
-    {
-      icon: <Phone className="h-6 w-6 text-accent" />,
-      title: "Phone",
-      details: ["+971504314269"],
-      description: "Contact our CEO directly"
-    },
-    {
-      icon: <Mail className="h-6 w-6 text-accent" />,
-      title: "Email",
-      details: ["imtaz@primelevelrealestate.com"],
-      description: "Direct email to our CEO"
-    },
-    {
-      icon: <MapPin className="h-6 w-6 text-accent" />,
-      title: "Office",
-      details: ["123 Business District", "Your City, State 12345"],
-      description: "Visit our office location"
-    },
-    {
-      icon: <Clock className="h-6 w-6 text-accent" />,
-      title: "Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
-      description: "We're available when you need us"
-    },
-    {
-      icon: <Globe className="h-6 w-6 text-accent" />,
-      title: "Website",
-      details: ["www.primelevelrealestate.com"],
-      description: "Visit our website for more information"
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      service: undefined,
+      message: ''
     }
-  ]
+  })
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      setIsSubmitting(true)
+      await sendEmail(data)
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      })
+
+      reset()
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="min-h-screen pt-20">
-      <PageHeader 
+      <PageHeader
         title="Contact Us"
         subtitle="Ready to take the next step? Get in touch with our expert team today. We're here to answer your questions and help you achieve your real estate goals."
       />
 
       {/* Contact Form & Info */}
       <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12">
             {/* Contact Form */}
             <Card className="shadow-elegant">
               <CardContent className="p-8">
-                <div className="mb-8">
-                  <div className="flex items-center space-x-3 mb-4">
+                <div className="mb-8 text-center">
+                  <div className="inline-flex items-center space-x-3 mb-4">
                     <MessageSquare className="h-8 w-8 text-accent" />
                     <h2 className="text-2xl font-semibold">Send us a Message</h2>
                   </div>
@@ -107,51 +95,59 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="fullName">Full Name</Label>
+                    <div className="relative flex items-center">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                       <Input
-                        id="firstName"
-                        placeholder="Enter your first name"
-                        required
+                        {...register('fullName')}
+                        placeholder="Enter your full name"
+                        className="pl-10"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input
-                        id="lastName"
-                        placeholder="Enter your last name"
-                        required
-                      />
-                    </div>
+                    {errors.fullName && (
+                      <p className="text-sm text-red-500 mt-1">{errors.fullName.message}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email address"
-                      required
-                    />
+                    <div className="relative flex items-center">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        {...register('email')}
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="pl-10"
+                      />
+                    </div>
+                    {errors.email && (
+                      <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                    />
+                    <Label htmlFor="phone">Phone Number (Optional)</Label>
+                    <div className="relative flex items-center">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        {...register('phone')}
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        className="pl-10"
+                      />
+                    </div>
+                    {errors.phone && (
+                      <p className="text-sm text-red-500 mt-1">{errors.phone.message}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="service">Service Interest</Label>
                     <select
-                      id="service"
+                      {...register('service')}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                      required
                     >
                       <option value="">Select a service</option>
                       <option value="buying">Buy a Property</option>
@@ -160,92 +156,45 @@ const Contact = () => {
                       <option value="management">Property Management</option>
                       <option value="consultation">General Consultation</option>
                     </select>
+                    {errors.service && (
+                      <p className="text-sm text-red-500 mt-1">{errors.service.message}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
-                      id="message"
+                      {...register('message')}
                       placeholder="Tell us about your real estate needs or questions..."
                       className="min-h-[120px]"
-                      required
                     />
+                    {errors.message && (
+                      <p className="text-sm text-red-500 mt-1">{errors.message.message}</p>
+                    )}
                   </div>
 
-                  <Button
-                    type="submit"
-                    variant="luxury"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      type="submit"
+                      variant="luxury"
+                      size="lg"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Mail className="mr-2 h-4 w-4" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+
+                  </div>
                 </form>
               </CardContent>
             </Card>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  We're here to help you with all your real estate needs. Whether you're buying,
-                  selling, or just have questions about the market, our experienced team is ready
-                  to provide personalized assistance.
-                </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-6">
-                {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover:shadow-elegant transition-smooth">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          {info.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold mb-2">{info.title}</h3>
-                          <div className="space-y-1 mb-2">
-                            {info.details.map((detail, detailIndex) => (
-                              <p key={detailIndex} className="text-sm font-medium">
-                                {detail}
-                              </p>
-                            ))}
-                          </div>
-                          <p className="text-xs text-muted-foreground">
-                            {info.description}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Google Map Placeholder */}
-              <Card className="overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="h-64 bg-primary/5 flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="h-12 w-12 text-accent mx-auto mb-4" />
-                      <h3 className="font-semibold mb-2">Visit Our Office</h3>
-                      <p className="text-sm text-muted-foreground">
-                        123 Business District<br />
-                        Your City, State 12345
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
@@ -305,12 +254,14 @@ const Contact = () => {
             Contact us today for immediate assistance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="luxury" size="lg" className="bg-white text-primary hover:bg-white/90" onClick={openWhatsApp}>
+            <Button
+              variant="luxury"
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+              onClick={() => openWhatsApp()}
+            >
               <Phone className="mr-2 h-5 w-5" />
               Call Now
-            </Button>
-            <Button variant="outline-dark" size="lg" className="border-white text-white hover:bg-white hover:text-primary" onClick={openEmail}>
-              Schedule Consultation
             </Button>
           </div>
         </div>

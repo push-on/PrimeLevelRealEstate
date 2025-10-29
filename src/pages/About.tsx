@@ -1,6 +1,8 @@
-import PageHeader from '@/components/PageHeader';
+import PageHeader from '@/components/PageHeader'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { openWhatsApp } from '@/lib/whatsapp'
+import { openEmail } from '@/lib/email'
 import {
   Users,
   Award,
@@ -49,32 +51,11 @@ const About = () => {
     "Extensive local market knowledge"
   ]
 
-  const teamMembers = [
-    {
-      name: "Imtaz Ahmed",
-      role: "Founder & CEO",
-      description: "As the visionary Founder & CEO of Prime Level Real Estate, Imtaz Ahmed leads with expertise and innovation in the real estate industry.",
-      contact: {
-        phone: "+971544887771",
-        email: "info@primelevelrealestate.com",
-        website: "www.primelevelrealestate.com"
-      }
-    },
-    {
-      name: "David Thompson",
-      role: "Senior Sales Director",
-      description: "David brings 5 years of sales expertise and has closed over 200 successful transactions."
-    },
-    {
-      name: "Sarah Kim",
-      role: "Property Manager",
-      description: "Sarah oversees our property management division with exceptional attention to detail and client care."
-    }
-  ]
+
 
   return (
     <div className="min-h-screen pt-20">
-      <PageHeader 
+      <PageHeader
         title="About Prime Level Real Estate"
         subtitle="Building lasting relationships through exceptional real estate service. Our story is one of dedication, expertise, and unwavering commitment to our clients."
       />
@@ -102,7 +83,12 @@ const About = () => {
                   known for our integrity, expertise, and personalized approach to every transaction.
                 </p>
               </div>
-              <Button variant="luxury" size="lg" className="mt-8">
+              <Button
+                variant="luxury"
+                size="lg"
+                className="mt-8"
+                onClick={() => openWhatsApp("I'd like to see your available properties.")}
+              >
                 View Our Properties
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -183,13 +169,13 @@ const About = () => {
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold mb-2">
-                    <CountUp end={500} suffix="+" />
+                    <CountUp end={200} suffix="+" />
                   </div>
                   <div className="text-white/80 text-sm">Properties Sold</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold mb-2">
-                    <CountUp end={15} suffix="+" />
+                    <CountUp end={5} suffix="+" />
                   </div>
                   <div className="text-white/80 text-sm">Years Experience</div>
                 </div>
@@ -211,35 +197,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 bg-gradient-to-br from-muted/30 to-secondary/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-6">Meet Our Team</h2>
-            <p className="text-xl text-muted-foreground">
-              Experienced professionals dedicated to your success
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-elegant transition-smooth">
-                <CardContent className="p-8">
-                  <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">{member.name}</h3>
-                  <p className="text-accent font-medium mb-4">{member.role}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {member.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -249,7 +206,12 @@ const About = () => {
           <p className="text-xl text-white/90 mb-8">
             Experience the Prime Level Real Estate difference. Let's discuss your real estate goals today.
           </p>
-          <Button variant="premium" size="lg" className="bg-white text-primary hover:bg-white/90">
+          <Button
+            variant="premium"
+            size="lg"
+            className="bg-white text-primary hover:bg-white/90"
+            onClick={openEmail}
+          >
             Get in Touch
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
