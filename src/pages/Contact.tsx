@@ -1,6 +1,5 @@
 import PageHeader from '@/components/PageHeader'
 import { openWhatsApp } from '@/lib/whatsapp'
-import { openEmail } from '@/lib/email'
 import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -11,7 +10,6 @@ import { useToast } from '@/hooks/use-toast'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { sendEmail } from '@/lib/emailService'
 import {
   Phone,
   Mail,
@@ -49,25 +47,34 @@ const Contact = () => {
     }
   })
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = (data: FormData) => {
     try {
-      setIsSubmitting(true)
-      await sendEmail(data)
+      const subject = `Real Estate ${data.service} Inquiry from ${data.fullName}`
+      const body = `
+Name: ${data.fullName}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+Service: ${data.service}
+
+Message:
+${data.message}
+      `.trim()
+
+      const mailtoLink = `mailto:imtaz@primelevelre.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      window.location.href = mailtoLink
 
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        title: "Email App Opened",
+        description: "Your default email app has been opened with the message.",
       })
 
       reset()
     } catch (error) {
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: "There was a problem opening your email app. Please try again.",
         variant: "destructive"
       })
-    } finally {
-      setIsSubmitting(false)
     }
   }
 
