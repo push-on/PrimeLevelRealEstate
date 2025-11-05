@@ -12,6 +12,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 import CountUp from '@/components/CountUp'
+import { motion } from 'framer-motion'
 
 const About = () => {
   // Add padding-top to account for fixed navigation
@@ -64,7 +65,12 @@ const About = () => {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <h2 className="heading-lg mb-6">Our Story</h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
@@ -92,8 +98,14 @@ const About = () => {
                 View Our Properties
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </div>
-            <div className="space-y-6">
+            </motion.div>
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
               <Card className="bg-primary/5 border-0">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
@@ -112,7 +124,7 @@ const About = () => {
                   </p>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -120,26 +132,40 @@ const About = () => {
       {/* Values */}
       <section className="py-20 bg-gradient-to-br from-secondary/50 to-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h2 className="heading-lg mb-6">Our Values</h2>
             <p className="text-xl text-muted-foreground">
               The principles that guide everything we do
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-elegant transition-smooth group">
-                <CardContent className="p-8">
-                  <div className="mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    {value.icon}
-                  </div>
-                  <h3 className="font-semibold text-lg mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+              >
+                <Card className="text-center hover:shadow-elegant transition-smooth group h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                      {value.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg mb-4">{value.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -149,7 +175,12 @@ const About = () => {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <h2 className="heading-lg mb-6">Our Achievements</h2>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 Over the years, we've built a track record of success that speaks to
@@ -157,14 +188,27 @@ const About = () => {
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {achievements.map((achievement, index) => (
-                  <div key={index} className="flex items-center space-x-3">
+                  <motion.div 
+                    key={index} 
+                    className="flex items-center space-x-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 * index }}
+                  >
                     <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
                     <span className="text-sm">{achievement}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
-            <div className="bg-primary p-8 rounded-2xl text-white">
+            </motion.div>
+            <motion.div 
+              className="bg-primary p-8 rounded-2xl text-white"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
               <h3 className="text-2xl font-bold mb-6">By the Numbers</h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
@@ -192,30 +236,43 @@ const About = () => {
                   <div className="text-white/80 text-sm">Support</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-20 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div 
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <h2 className="heading-lg text-white mb-6">
             Ready to Work With Us?
           </h2>
           <p className="text-xl text-white/90 mb-8">
             Experience the Prime Level Real Estate difference. Let's discuss your real estate goals today.
           </p>
-          <Button
-            variant="premium"
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90"
-            onClick={openEmail}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           >
-            Get in Touch
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+            <Button
+              variant="premium"
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+              onClick={openEmail}
+            >
+              Get in Touch
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   )

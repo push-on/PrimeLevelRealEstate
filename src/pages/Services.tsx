@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   Home,
   TrendingUp,
@@ -135,33 +136,48 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {mainServices.map((service, index) => (
-              <Card key={index} className="hover:shadow-elegant transition-smooth group">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-6">
-                    <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      {service.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
-                      <div className="space-y-3">
-                        {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center space-x-3">
-                            <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                            <span className="text-sm">{feature}</span>
-                          </div>
-                        ))}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
+              >
+                <Card className="hover:shadow-elegant transition-smooth group h-full">
+                  <CardContent className="p-8">
+                    <div className="flex items-start space-x-6">
+                      <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
                       </div>
-                      <Button variant="luxury" className="mt-6" onClick={() => setSelectedService(service)}>
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-semibold mb-3">{service.title}</h3>
+                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                          {service.description}
+                        </p>
+                        <div className="space-y-3">
+                          {service.features.map((feature, featureIndex) => (
+                            <motion.div 
+                              key={featureIndex} 
+                              className="flex items-center space-x-3"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true, amount: 0.3 }}
+                              transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.15 + featureIndex * 0.05 }}
+                            >
+                              <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
+                              <span className="text-sm">{feature}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                        <Button variant="luxury" className="mt-6" onClick={() => setSelectedService(service)}>
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -170,31 +186,57 @@ const Services = () => {
       {/* Process Section */}
       <section className="py-20 bg-primary/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h2 className="heading-lg mb-6">Our Process</h2>
             <p className="text-xl text-muted-foreground">
               A proven approach that ensures success at every step
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
-              <Card key={index} className="text-center hover:shadow-elegant transition-smooth group relative">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform duration-300">
-                    {step.step}
-                  </div>
-                  <h3 className="font-semibold text-lg mb-4">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </CardContent>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-6 w-6 text-accent" />
-                  </div>
-                )}
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 }}
+              >
+                <Card className="text-center hover:shadow-elegant transition-smooth group relative h-full">
+                  <CardContent className="p-8">
+                    <motion.div 
+                      className="w-12 h-12 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 transition-transform duration-300"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 + 0.2 }}
+                    >
+                      {step.step}
+                    </motion.div>
+                    <h3 className="font-semibold text-lg mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                  {index < processSteps.length - 1 && (
+                    <motion.div 
+                      className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.15 + 0.4 }}
+                    >
+                      <ArrowRight className="h-6 w-6 text-accent" />
+                    </motion.div>
+                  )}
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -203,26 +245,44 @@ const Services = () => {
       {/* Additional Services */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h2 className="heading-lg mb-6">Additional Services</h2>
             <p className="text-xl text-muted-foreground">
               Comprehensive support for all your real estate needs
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {additionalServices.map((service, index) => (
-              <Card key={index} className="hover:shadow-elegant transition-smooth group">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-semibold text-lg mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+              >
+                <Card className="hover:shadow-elegant transition-smooth group h-full">
+                  <CardContent className="p-6 text-center">
+                    <motion.div 
+                      className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {service.icon}
+                    </motion.div>
+                    <h3 className="font-semibold text-lg mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -232,47 +292,63 @@ const Services = () => {
       <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <h2 className="heading-lg text-white mb-6">
                 Why Choose Prime Level Real Estate?
               </h2>
               <div className="space-y-4 text-white/90">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>5+ years of proven experience in real estate</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>200+ successful transactions completed</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>98% client satisfaction rating</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>Licensed and insured professionals</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
-                  <span>24/7 customer support and communication</span>
-                </div>
+                {[
+                  "5+ years of proven experience in real estate",
+                  "200+ successful transactions completed",
+                  "98% client satisfaction rating",
+                  "Licensed and insured professionals",
+                  "24/7 customer support and communication"
+                ].map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    className="flex items-center space-x-3"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 + index * 0.1 }}
+                  >
+                    <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
+                    <span>{item}</span>
+                  </motion.div>
+                ))}
               </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+            </motion.div>
+            <motion.div 
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
               <h3 className="text-2xl font-bold text-white mb-6">Ready to Get Started?</h3>
               <p className="text-white/80 mb-6 leading-relaxed">
                 Contact us today for a free consultation and discover how we can help you achieve your real estate goals.
               </p>
-              <div className="space-y-4">
+              <motion.div 
+                className="space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+              >
                 <Button variant="luxury" size="lg" className="w-full bg-white text-primary hover:bg-white/90" onClick={openEmail}>
                   Schedule Consultation
                 </Button>
                 <Button variant="outline-dark" size="lg" className="w-full border-white text-white hover:bg-white hover:text-primary" onClick={() => openWhatsApp()}>
                   Call Now
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>

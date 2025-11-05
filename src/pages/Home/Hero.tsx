@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const Hero = () => {
   const navigate = useNavigate()
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden ">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-24">
       {/* Background Image */}
       <img
         src={heroImage}
@@ -23,7 +23,7 @@ const Hero = () => {
 
       {/* Content */}
       <div
-        className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
+        className=" relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center py-8 md:py-12"
       >
         <div className="max-w-4xl w-full ">
           <div className="space-y-4 md:space-y-6">

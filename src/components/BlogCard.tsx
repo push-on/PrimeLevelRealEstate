@@ -16,9 +16,9 @@ const BlogCard = ({ post }: BlogCardProps) => {
 	const sizes = '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
 
 	return (
-		<Card className="hover:shadow-elegant transition-smooth group">
-			<CardContent className="p-0">
-				<Link to={`/blog/${post.id}`} className="block">
+		<Card className="hover:shadow-elegant transition-smooth group h-full flex flex-col">
+			<CardContent className="p-0 flex flex-col h-full">
+				<Link to={`/blog/${post.id}`} className="block flex flex-col h-full">
 					<div className="aspect-video w-full overflow-hidden rounded-t-xl bg-muted">
 						<img
 							src={imgSrc}
@@ -32,10 +32,10 @@ const BlogCard = ({ post }: BlogCardProps) => {
 							className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
 						/>
 					</div>
-					<div className="p-5">
+					<div className="p-5 flex flex-col flex-grow">
 						<div className="text-xs uppercase tracking-wide text-accent mb-2">{post.category}</div>
 						<h3 className="font-semibold text-lg mb-2 line-clamp-2">{post.title}</h3>
-						<p className="text-sm text-muted-foreground line-clamp-3">{post.excerpt}</p>
+						<p className="text-sm text-muted-foreground line-clamp-3 flex-grow">{post.excerpt}</p>
 						<div className="mt-4 text-xs text-muted-foreground">{new Date(post.date).toLocaleDateString()} • {post.author}</div>
 					</div>
 				</Link>

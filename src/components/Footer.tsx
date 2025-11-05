@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Phone, Mail, Globe, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear()
@@ -25,13 +26,23 @@ const Footer = () => {
 		'Investment Advisory'
 	]
 
+	const handleLinkClick = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
 	return (
 		<footer className="bg-card text-card-foreground border-t">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{/* Company Info */}
-					<div className="space-y-4">
-						<Link to="/" className="block">
+					<motion.div 
+						className="space-y-4"
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{ duration: 0.5, ease: "easeOut" }}
+					>
+						<Link to="/" onClick={handleLinkClick} className="block">
 							<img
 								src="/logo.svg"
 								alt="Prime Level Real Estate"
@@ -42,49 +53,87 @@ const Footer = () => {
 							Prime Level Real Estate is your trusted partner in finding the perfect property.
 							We provide exceptional real estate services with a focus on client satisfaction.
 						</p>
-					</div>
+					</motion.div>
 
 					{/* Quick Links */}
-					<div>
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+					>
 						<h3 className="font-semibold text-lg mb-4">Quick Links</h3>
 						<ul className="space-y-2">
-							{quickLinks.map((link) => (
-								<li key={link.path}>
+							{quickLinks.map((link, index) => (
+								<motion.li 
+									key={link.path}
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true, amount: 0.3 }}
+									transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + index * 0.05 }}
+								>
 									<Link
 										to={link.path}
+										onClick={handleLinkClick}
 										className="text-sm text-muted-foreground hover:text-accent transition-colors"
 									>
 										{link.label}
 									</Link>
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 
 					{/* Services */}
-					<div>
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+					>
 						<h3 className="font-semibold text-lg mb-4">Our Services</h3>
 						<ul className="space-y-2">
-							{services.map((service) => (
-								<li
+							{services.map((service, index) => (
+								<motion.li
 									key={service}
 									className="text-sm text-muted-foreground"
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true, amount: 0.3 }}
+									transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.05 }}
 								>
 									{service}
-								</li>
+								</motion.li>
 							))}
 						</ul>
-					</div>
+					</motion.div>
 
 					{/* Contact Info */}
-					<div>
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.3 }}
+						transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+					>
 						<h3 className="font-semibold text-lg mb-4">Contact Us</h3>
 						<ul className="space-y-3">
-							<li className="flex items-center space-x-3 text-sm text-muted-foreground">
+							<motion.li 
+								className="flex items-center space-x-3 text-sm text-muted-foreground"
+								initial={{ opacity: 0, x: -20 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true, amount: 0.3 }}
+								transition={{ duration: 0.4, ease: "easeOut", delay: 0.35 }}
+							>
 								<Phone className="h-4 w-4" />
 								<span>{contactInfo.phone}</span>
-							</li>
-							<li className="flex items-center space-x-3 text-sm text-muted-foreground">
+							</motion.li>
+							<motion.li 
+								className="flex items-center space-x-3 text-sm text-muted-foreground"
+								initial={{ opacity: 0, x: -20 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true, amount: 0.3 }}
+								transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
+							>
 								<Mail className="h-4 w-4" />
 								<a
 									href={`mailto:${contactInfo.email}`}
@@ -92,8 +141,14 @@ const Footer = () => {
 								>
 									{contactInfo.email}
 								</a>
-							</li>
-							<li className="flex items-center space-x-3 text-sm text-muted-foreground">
+							</motion.li>
+							<motion.li 
+								className="flex items-center space-x-3 text-sm text-muted-foreground"
+								initial={{ opacity: 0, x: -20 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true, amount: 0.3 }}
+								transition={{ duration: 0.4, ease: "easeOut", delay: 0.45 }}
+							>
 								<Globe className="h-4 w-4" />
 								<a
 									href={`https://${contactInfo.website}`}
@@ -103,17 +158,23 @@ const Footer = () => {
 								>
 									{contactInfo.website}
 								</a>
-							</li>
+							</motion.li>
 						</ul>
 
 						{/* Social Links */}
-						<div className="mt-6">
+						<motion.div 
+							className="mt-6"
+							initial={{ opacity: 0, scale: 0.8 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={{ once: true, amount: 0.3 }}
+							transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+						>
 							<div className="flex space-x-4">
 								<a
 									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors"
+									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
 								>
 									<Facebook className="h-5 w-5" />
 								</a>
@@ -121,7 +182,7 @@ const Footer = () => {
 									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors"
+									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
 								>
 									<Instagram className="h-5 w-5" />
 								</a>
@@ -129,21 +190,27 @@ const Footer = () => {
 									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors"
+									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
 								>
 									<Linkedin className="h-5 w-5" />
 								</a>
 							</div>
-						</div>
-					</div>
+						</motion.div>
+					</motion.div>
 				</div>
 
 				{/* Copyright */}
-				<div className="mt-12 pt-8 border-t border-border">
+				<motion.div 
+					className="mt-12 pt-8 border-t border-border"
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+				>
 					<p className="text-center text-sm text-muted-foreground">
 						© {currentYear} Prime Level Real Estate. All rights reserved.
 					</p>
-				</div>
+				</motion.div>
 			</div>
 		</footer>
 	)

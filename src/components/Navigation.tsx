@@ -18,13 +18,18 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setIsOpen(false)
+  }
+
   return (
     <nav className="fixed w-full top-0 z-50">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-xl transition-all duration-300 border-b border-white/10"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 transform hover:scale-105 transition-transform duration-300 relative z-50">
+          <Link to="/" onClick={handleLinkClick} className="flex items-center space-x-2 transform hover:scale-105 transition-transform duration-300 relative z-50">
             <img src="/logo.svg" alt="Prime Level Real Estate" className="w-[140px] h-[140px] brightness-0 invert" />
           </Link>
 
@@ -34,6 +39,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={handleLinkClick}
                 className={`relative text-sm font-medium group ${isActive(link.path)
                   ? 'text-white'
                   : 'text-gray-300 hover:text-white'
@@ -95,7 +101,7 @@ const Navigation = () => {
                           ? 'text-white pl-6 font-bold'
                           : 'text-gray-300 hover:text-white hover:pl-6'
                         }`}
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleLinkClick}
                     >
                       <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent transform transition-all duration-300 
                         ${isActive(link.path) ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}

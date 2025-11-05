@@ -2,6 +2,7 @@ import { Button } from "../../components/ui/button"
 import { ArrowRight } from "lucide-react"
 import ProfileImage from "@/assets/profile.webp"
 import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion"
 
 const MeetTheAgent = () => {
   const navigate = useNavigate()
@@ -9,7 +10,13 @@ const MeetTheAgent = () => {
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="flex justify-center">
+          <motion.div 
+            className="flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="w-full max-w-md overflow-hidden">
               <img
                 src={ProfileImage}
@@ -17,8 +24,14 @@ const MeetTheAgent = () => {
                 className="w-full h-full"
               />
             </div>
-          </div>
-          <div className="space-y-4 md:space-y-6">
+          </motion.div>
+          <motion.div 
+            className="space-y-4 md:space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          >
             <p className="text-sm uppercase tracking-[0.25em] text-accent font-medium">
               Founder & CEO
             </p>
@@ -42,7 +55,7 @@ const MeetTheAgent = () => {
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:scale-110" />
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
