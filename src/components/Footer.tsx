@@ -8,7 +8,6 @@ const Footer = () => {
 	const contactInfo = {
 		phone: "+97142238211",
 		email: "info@primelevelrealestate.com",
-		website: "www.primelevelrealestate.com"
 	}
 
 	const quickLinks = [
@@ -75,7 +74,7 @@ const Footer = () => {
 									<Link
 										to={link.path}
 										onClick={handleLinkClick}
-										className="text-sm text-muted-foreground hover:text-accent transition-colors"
+										className="text-sm text-muted-foreground hover:text-accent transition-colors hover:underline underline-offset-4 decoration-1"
 									>
 										{link.label}
 									</Link>
@@ -96,7 +95,7 @@ const Footer = () => {
 							{services.map((service, index) => (
 								<motion.li
 									key={service}
-									className="text-sm text-muted-foreground"
+									className="text-sm text-foreground"
 									initial={{ opacity: 0, x: -20 }}
 									whileInView={{ opacity: 1, x: 0 }}
 									viewport={{ once: true, amount: 0.3 }}
@@ -137,26 +136,9 @@ const Footer = () => {
 								<Mail className="h-4 w-4" />
 								<a
 									href={`mailto:${contactInfo.email}`}
-									className="hover:text-accent transition-colors"
+									className="hover:text-accent transition-colors hover:underline"
 								>
 									{contactInfo.email}
-								</a>
-							</motion.li>
-							<motion.li 
-								className="flex items-center space-x-3 text-sm text-muted-foreground"
-								initial={{ opacity: 0, x: -20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true, amount: 0.3 }}
-								transition={{ duration: 0.4, ease: "easeOut", delay: 0.45 }}
-							>
-								<Globe className="h-4 w-4" />
-								<a
-									href={`https://${contactInfo.website}`}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="hover:text-accent transition-colors"
-								>
-									{contactInfo.website}
 								</a>
 							</motion.li>
 						</ul>
@@ -171,29 +153,29 @@ const Footer = () => {
 						>
 							<div className="flex space-x-4">
 								<a
-									href="#"
+									href="https://www.facebook.com/profile.php?id=61579590244127"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
+									className="hover:text-accent hover:scale-110 duration-300 p-2 bg-primary text-primary-foreground rounded-full transition-all"
 								>
 									<Facebook className="h-5 w-5" />
 								</a>
 								<a
-									href="#"
+									href="https://www.instagram.com/primelevelrealestate"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
+									className="hover:text-accent hover:scale-110 duration-300 p-2 bg-primary text-primary-foreground rounded-full transition-all"
 								>
 									<Instagram className="h-5 w-5" />
 								</a>
-								<a
+								{/* <a
 									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300"
+									className="text-muted-foreground hover:text-accent transition-colors hover:scale-110 transition-transform duration-300 p-2 bg-primary text-primary-foreground rounded-full"
 								>
 									<Linkedin className="h-5 w-5" />
-								</a>
+								</a> */}
 							</div>
 						</motion.div>
 					</motion.div>
