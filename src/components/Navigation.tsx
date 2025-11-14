@@ -58,7 +58,7 @@ const Navigation = () => {
               variant="outline"
               size="lg"
               className="h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base tracking-wider text-white border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all duration-300"
-              onClick={openWhatsApp}
+              onClick={() => openWhatsApp()}
             >
               Get Started
             </Button>
@@ -115,7 +115,7 @@ const Navigation = () => {
                   <Button
                     variant="luxury"
                     className="w-full text-lg py-6 font-medium tracking-wider relative overflow-hidden group"
-                    onClick={openWhatsApp}
+                    onClick={() => openWhatsApp()}
                   >
                     <span className="relative z-10">Get Started</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/50 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
