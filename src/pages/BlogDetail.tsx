@@ -6,7 +6,14 @@ import { blogPosts } from '@/lib/blog'
 import { motion } from 'framer-motion'
 
 // Load all markdown files as raw strings
-const mdFiles = import.meta.glob('/src/content/blogs/*.md', { as: 'raw' }) as Record<string, () => Promise<string>>
+// const mdFiles = import.meta.glob('/src/content/blogs/*.md', { as: 'raw' }) as Record<string, () => Promise<string>>
+
+
+const mdFiles = import.meta.glob('/src/content/blogs/*.md', {
+	query: '?raw',
+	import: 'default'
+}) as Record<string, () => Promise<string>>
+
 
 function parseFrontmatter(md: string) {
 	if (md.startsWith('---')) {
